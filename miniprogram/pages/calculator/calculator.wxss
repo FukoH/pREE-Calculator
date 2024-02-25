@@ -1,0 +1,47 @@
+.container {
+    margin: 20px;
+  }
+  
+  .input-item {
+    margin-top:  15px;
+    margin-bottom: 10px;
+
+  }
+
+  .input-item input {
+    width: 100px; /* 设置输入框宽度 */
+  }
+  
+  .input-item .unit {
+    width: 30px; /* 设置单位文本宽度 */
+  }
+
+.input-item input,
+.input-item .unit {
+  display: inline-block;
+}
+
+.input-item input {
+    width: 100px; /* 设置输入框宽度 */
+    /* border: none;  */
+    border-bottom: 1px solid #ccc; /* 设置底部边框为灰色下划线 */
+    /* padding: 10px 0;  */
+    /* box-sizing: border-box;  */
+    text-align: center;
+  }
+
+  button {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .result {
+    margin-top: 20px;
+  }
+  

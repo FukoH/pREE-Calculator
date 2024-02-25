@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="input-item">
+    <text>体重：</text>
+    <input type="digit" bindblur="bindWeightInput" />
+    <text class="unit">kg</text>
+  </view>
+  <view class="input-item">
+    <text>年龄：</text>
+    <input type="digit" bindblur="bindAgeInput" />
+    <text class="unit">岁</text>
+  </view>
+  <view class="input-item">
+    <text>握力：</text> <input type="digit" bindblur="bindGripStrengthInput" /><text class="unit">N</text>
+  </view>
+  <view class="input-item">
+    <text>心率：</text>
+    <input type="digit" bindblur="bindHeartRateInput" />
+    <text>次/每分</text>
+  </view>
+  <button bindtap="calculate">计算</button>
+  <view class="result">
+    <text>计算结果：</text>
+    <text>{{pREE}}</text>
+  </view>
+</view>
