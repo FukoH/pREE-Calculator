@@ -1,25 +1,45 @@
 <view class="container">
-  <view class="input-item">
-    <text>体重：</text>
-    <input type="digit" bindblur="bindWeightInput" />
-    <text class="unit">kg</text>
+    <view class="gender">
+    <text>性别：</text>
+    <radio-group bindchange="selectGender">
+      <label class="radio-label">
+        <radio value="male" checked="{{gender==='male'}}" />男
+      </label>
+      <label class="radio-label">
+        <radio value="female" checked="{{gender==='female'}}" />女
+      </label>
+    </radio-group>
   </view>
+ 
   <view class="input-item">
     <text>年龄：</text>
     <input type="digit" bindblur="bindAgeInput" />
     <text class="unit">岁</text>
   </view>
   <view class="input-item">
-    <text>握力：</text> <input type="digit" bindblur="bindGripStrengthInput" /><text class="unit">N</text>
+    <text>身高：</text>
+    <input type="digit" bindblur="bindHeightInput" />
+    <text class="unit">厘米</text>
+  </view>
+  <view class="input-item">
+    <text>体重：</text>
+    <input type="digit" bindblur="bindWeightInput" />
+    <text class="unit">千克</text>
   </view>
   <view class="input-item">
     <text>心率：</text>
     <input type="digit" bindblur="bindHeartRateInput" />
-    <text>次/每分</text>
+    <text>次/分钟</text>
   </view>
+  <view class="input-item">
+    <text>握力：</text> <input type="digit" bindblur="bindGripStrengthInput" /><text class="unit">千克</text>
+  </view>
+<view class="result">
   <button bindtap="calculate">计算</button>
-  <view class="result">
-    <text>计算结果：</text>
-    <text>{{pREE}}</text>
+    <!-- 显示不同公式名称 -->
+  <view wx:for="{{formulas}}" wx:key="index" class="formula-item">
+    <text class="formula-name">{{item.name}}</text>
+    <text class ="formula-result" wx:if="{{item.result}}">{{item.result}}</text>
   </view>
+</view>
 </view>

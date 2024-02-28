@@ -7,6 +7,16 @@
     margin-bottom: 10px;
 
   }
+  /* 让input-item的text和result的formula-name都左对齐到同一个位置 */
+
+  .input-item .text {
+    width: 100px; /* 设置文本宽度 */
+    display: inline-block;
+    text-align: left; /* 左对齐 */
+  }
+
+  
+
 
   .input-item input {
     width: 100px; /* 设置输入框宽度 */
@@ -16,9 +26,24 @@
     width: 30px; /* 设置单位文本宽度 */
   }
 
+  /* radio-label和前面的text在同一行显示 */
+.radio-label {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .gender {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
 .input-item input,
 .input-item .unit {
+  /* 在同一行显示 */
   display: inline-block;
+  /* 防止折行 */
+  white-space: nowrap;
 }
 
 .input-item input {
@@ -28,6 +53,7 @@
     /* padding: 10px 0;  */
     /* box-sizing: border-box;  */
     text-align: center;
+    
   }
 
   button {
@@ -41,7 +67,28 @@
     cursor: pointer;
   }
   
+ 
   .result {
-    margin-top: 20px;
+    padding: 20px;
   }
   
+  .formula-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* 垂直居中 */
+    margin-bottom: 10px;
+  }
+  
+  .formula-name {
+    flex: 1; /* 填充剩余空间 */
+    text-align: left; /* 左对齐 */
+    font-size: 14px; /* 设置字体大小 */
+    white-space: nowrap; /* 防止折行 */
+  }
+  
+  .formula-result {
+    flex: 1; /* 填充剩余空间 */
+    text-align: right; /* 右对齐 */
+    font-size: 14px; /* 设置字体大小 */
+    white-space: nowrap; /* 防止折行 */
+  }
