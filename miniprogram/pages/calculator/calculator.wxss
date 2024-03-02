@@ -56,7 +56,7 @@
     
   }
 
-  button {
+  .btn-group button {
     width: 100%;
     background-color: #007bff;
     color: #fff;

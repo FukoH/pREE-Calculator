@@ -1,0 +1,8 @@
+<view class="header">
+  <view class="logo">
+    <image src="/static/logo.png" mode="aspectFit"></image>
+  </view>
+  <view class="title">
+    老年静息数据测量
+  </view>
+</view>

@@ -1,0 +1,16 @@
+<view>
+  <view class="footer-content">
+    <p>致谢</p>
+    <p>数据搜集协助</p>
+    <ul class="assistants">
+      <li>倪琛琛 <span>合肥市第一人民医院老年科</span></li>
+      <li>侯平 <span>兴安盟人民医院老年科</span></li>
+      <li>范丽丽 <span>深圳市中医院老年科</span></li>
+      <li>董明 <span>盘锦辽油宝石花医院</span></li>
+      <li>张黎 <span>云南省第一人民医院</span></li>
+      <li>赵春梅 <span>山东省泰山医院老年科</span></li>
+      <li>吴聪 <span>郑州大学第一附属医院老年内分泌科</span></li>
+      <li>张瑞英 <span>衡水市人民医院肾内科</span></li>
+    </ul>
+  </view>
+</view>

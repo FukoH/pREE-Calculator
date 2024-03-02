@@ -1,4 +1,4 @@
-<view class="container">
+<view class="calculator-container">
     <view class="gender">
     <text>性别：</text>
     <radio-group bindchange="selectGender">
@@ -34,8 +34,14 @@
   <view class="input-item">
     <text>握力：</text> <input type="digit" bindblur="bindGripStrengthInput" /><text class="unit">千克</text>
   </view>
+
+  <view class="btn-group">
+    <botton bindtap="calculate">计算</botton>
+    <botton bindtap="reset">重置</botton>
+  </view>
+
 <view class="result">
-  <button bindtap="calculate">计算</button>
+  <!-- <button bindtap="calculate">计算</button> -->
     <!-- 显示不同公式名称 -->
   <view wx:for="{{formulas}}" wx:key="index" class="formula-item">
     <text class="formula-name">{{item.name}}</text>

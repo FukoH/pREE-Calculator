@@ -7,6 +7,15 @@ function isValidNumber(value: any) {
     return /^\d+(\.\d+)?$/.test(value) && parseFloat(value) > 0;
   }
 
+  const formulas = [ 
+  { name: '1BJH-ZHW1公式' },
+  { name: 'Alemán公式' },
+  { name: 'Lührmann1公式' },
+  { name: 'Harris-Benedict（HB公式）' },
+  { name: 'FAO-WHO-UNU（WHO公式）' },
+  { name: 'ESPEN公式' },
+]
+
 Component({
     data: {
         weight: 0,
@@ -15,15 +24,7 @@ Component({
         gripStrength: 0,
         heartRate: 0,
         gender: 'male',
-        formulas: [ // 不同公式名称数组
-            { name: '1BJH-ZHW1公式' },
-            { name: 'Alemán公式' },
-            { name: 'Lührmann1公式' },
-            { name: 'Harris-Benedict（HB公式）' },
-            { name: 'FAO-WHO-UNU（WHO公式）' },
-            { name: 'ESPEN公式' },
-            { name: 'CSPEN公式' }
-          ]
+        formulas: formulas
     },
     methods: {
         bindWeightInput: function (e: any) {
@@ -240,6 +241,18 @@ Component({
         res = weight * 18.4
     }
     return parseFloat(res.toFixed(0));
+  },
+  reset: function() {
+    this.setData({
+      weight: 0,
+      age: 0,
+      kg: 0,
+      bmp: 0,
+      gender: 'male',
+      showResults: false,
+      formulas: formulas
+    });
   }
     }
+    
 });

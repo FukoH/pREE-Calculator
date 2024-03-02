@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-      "calculator": "/pages/calculator/calculator"
+      "calculator": "/pages/calculator/calculator",
+      "header":"/pages/header/header",
+      "footer":"/pages/footer/footer"
   }
 }

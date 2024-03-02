@@ -1,0 +1,37 @@
+footer {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.footer-content ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-content li {
+  width: 50%; /* 一行显示两个 */
+  margin-bottom: 10px;
+  box-sizing: border-box; /* 边框盒模型 */
+}
+
+.footer-content li span {
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .footer-content li {
+    width: 100%; /* 在小屏幕上一行只显示一个 */
+  }
+}
