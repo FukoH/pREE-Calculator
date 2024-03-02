@@ -109,6 +109,43 @@ Component({
             const gripStrength = this.data.gripStrength;
             const gender = this.data.gender;
 
+            // 校验data数据是否合法
+            if (!isValidNumber(weight)) {
+                wx.showToast({
+                  title: '请输入正确的体重',
+                  icon: 'none'
+                });
+                return;
+              }
+              if (!isValidNumber(age)) {
+                wx.showToast({
+                  title: '请输入正确的年龄',
+                  icon: 'none'
+                });
+                return;
+              }
+              if (!isValidNumber(gripStrength)) {
+                wx.showToast({
+                  title: '请输入正确的握力',
+                  icon: 'none'
+                });
+                return;
+              }
+              if (!isValidNumber(heartRate)) {
+                wx.showToast({
+                  title: '请输入正确的心率',
+                  icon: 'none'
+                });
+                return;
+              }
+              if (!isValidNumber(height)) {
+                wx.showToast({
+                  title: '请输入正确的身高',
+                  icon: 'none'
+                });
+                return;
+              }
+
             // 计算不同公式的结果并更新页面数据
             const formulas = this.data.formulas.map(item => {
                 let result = 0;
@@ -143,9 +180,9 @@ Component({
             });
           },
    // 计算1BJH-ZHW1公式
-   calculate1BJHZHW1: function(weight: number, age: number, gripStrength: number, bmp: number) {
-    let res = 794.847 + 8.661 * weight - 7.976 * age + 14.757 * gripStrength + 5.037 * bmp
-    return parseFloat(res.toFixed(2));
+   calculate1BJHZHW1: function(weight: number, age: number, gripStrength: number, heartRate: number) {
+    let res = 794.847 + 8.661 * weight - 7.976 * age + 14.757 * gripStrength + 5.037 * heartRate;
+    return parseFloat(res.toFixed(0));
   },
   // 计算Alemán 公式
   calculateAleman: function(weight: number, gender: string) {
@@ -155,7 +192,7 @@ Component({
     } else {
        res =  (1644.7 + 57.14 * weight) * 0.2389;
     }
-    return parseFloat(res.toFixed(2));
+    return parseFloat(res.toFixed(0));
   },
   // 计算Lührmann1 公式
   calculateLuhrmann1: function(weight: number, age: number, gender: string) {
@@ -165,7 +202,7 @@ Component({
     } else {
       res =  (3169 + 50.0 * weight - 15.3 * age) * 0.2389;
     }
-    return parseFloat(res.toFixed(2));
+    return parseFloat(res.toFixed(0));
   },
   // 计算Harris-Benedict（HB公式）
   calculateHarrisBenedict: function(weight: number, age: number, height: number, gender: string) {
@@ -175,7 +212,7 @@ Component({
     } else {
       res =  665.0995 + 9.5634 * weight + 1.8496 * height - 4.6756 * age;
     }
-    return parseFloat(res.toFixed(2));
+    return parseFloat(res.toFixed(0));
   },
   // 计算FAO-WHO-UNU（WHO公式）
   calculateFAOWHOUNU: function(weight: number, height: number, gender: string) {
@@ -185,7 +222,7 @@ Component({
     } else {
       res = (38.5 * weight + 26.652 * height - 1264) / 4.186;
     }
-    return parseFloat(res.toFixed(2));
+    return parseFloat(res.toFixed(0));
   },
   // 计算ESPEN公式
   calculateESPEN: function(weight: number) {
@@ -196,11 +233,13 @@ Component({
   calculateCSPEN: function(weight: number,height: number) {
 
     let bmi = 10000 * weight / (height * height);
+    let res = 0;
     if (bmi < 21) {
-      return weight * 21.4;
+        res = weight * 21.4
     } else {
-      return weight * 18.4;
+        res = weight * 18.4
     }
+    return parseFloat(res.toFixed(0));
   }
     }
 });
