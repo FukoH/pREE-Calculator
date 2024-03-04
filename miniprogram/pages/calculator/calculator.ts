@@ -18,11 +18,11 @@ function isValidNumber(value: any) {
 
 Component({
     data: {
-        weight: 0,
-        height:0,
-        age: 0,
-        gripStrength: 0,
-        heartRate: 0,
+        weight: '',
+        height:'',
+        age: '',
+        gripStrength: '',
+        heartRate: '',
         gender: 'male',
         formulas: formulas
     },
@@ -103,11 +103,11 @@ Component({
             });
           },
         calculate: function() {
-            const age = this.data.age;
-            const height = this.data.height;
-            const weight = this.data.weight;
-            const heartRate = this.data.heartRate;
-            const gripStrength = this.data.gripStrength;
+            const age = parseFloat(this.data.age);
+            const height = parseFloat(this.data.height);
+            const weight = parseFloat(this.data.weight);
+            const heartRate = parseFloat(this.data.heartRate);
+            const gripStrength = parseFloat(this.data.gripStrength);
             const gender = this.data.gender;
 
             // 校验data数据是否合法
@@ -244,12 +244,12 @@ Component({
   },
   reset: function() {
     this.setData({
-      weight: 0,
-      age: 0,
-      kg: 0,
-      bmp: 0,
+      weight: '',
+      age: '',
+      height: '',
+      gripStrength: '',
+      heartRate: '',
       gender: 'male',
-      showResults: false,
       formulas: formulas
     });
   }

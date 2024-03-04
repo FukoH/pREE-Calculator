@@ -13,26 +13,28 @@
  
   <view class="input-item">
     <text>年龄：</text>
-    <input type="digit" bindblur="bindAgeInput" />
+    <input type="digit" bindblur="bindAgeInput" value="{{age}}" placeholder="请输入年龄"/>
     <text class="unit">岁</text>
   </view>
   <view class="input-item">
     <text>身高：</text>
-    <input type="digit" bindblur="bindHeightInput" />
+    <input type="digit" bindblur="bindHeightInput" value="{{height}}" placeholder="请输入身高"/>
     <text class="unit">厘米</text>
   </view>
   <view class="input-item">
     <text>体重：</text>
-    <input type="digit" bindblur="bindWeightInput" />
+    <input type="digit" bindblur="bindWeightInput" value="{{weight}}" placeholder="请输入体重" />
     <text class="unit">千克</text>
   </view>
   <view class="input-item">
     <text>心率：</text>
-    <input type="digit" bindblur="bindHeartRateInput" />
+    <input type="digit" bindblur="bindHeartRateInput" value="{{heartRate}}" placeholder="请输入心率" />
     <text>次/分钟</text>
   </view>
   <view class="input-item">
-    <text>握力：</text> <input type="digit" bindblur="bindGripStrengthInput" /><text class="unit">千克</text>
+    <text>握力：</text>
+    <input type="digit" bindblur="bindGripStrengthInput" value="{{gripStrength}}" placeholder="请输入握力" />
+    <text class="unit">千克</text>
   </view>
 
   <view class="btn-group">
