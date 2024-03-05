@@ -16,136 +16,186 @@ function isValidNumber(value: any) {
   { name: 'ESPEN公式' },
 ]
 
-Component({
-    data: {
-        weight: '',
-        height:'',
-        age: '',
-        gripStrength: '',
-        heartRate: '',
-        gender: 'male',
-        formulas: formulas
+Page({
+  data: {
+    form: {
+      age: '',
+      height: '',
+      weight: '',
+      heartRate:'',
+      gripStrength:'',
+      gender:''
     },
-    methods: {
-        bindWeightInput: function (e: any) {
-            const value = e.detail.value;
-
-            if (!isValidNumber(value)) {
-                wx.showToast({
-                  title: '请输入正确的体重',
-                  icon: 'none'
-                });
-                return;
-              }
-            this.setData({
-                weight: e.detail.value
-            });
+    radioItems: [
+        {name: '男', value: 'male'},
+        {name: '女', value: 'female'}
+    ],
+    errorMsg: '', // 验证表单显示错误信息
+    formulas: formulas,
+    rules: [
+        {
+          name: 'age',
+          rules: {required: true, errorMessage: '请输入正确的年龄',min:0}
         },
-        bindHeightInput: function (e: any) {
-            const value = e.detail.value;
-
-            if (!isValidNumber(value)) {
-                wx.showToast({
-                  title: '请输入正确的身高',
-                  icon: 'none'
-                });
-                return;
+        {
+          name: 'height',
+          rules: [{required: true, errorMessage: '请输入身高'}, {
+            validator: (rule:any, value:any) => {
+              if(isValidNumber(value)) {
+                return rule.message;
               }
-            this.setData({
-                height: e.detail.value
-            });
+            }, message: '身高格式不正确'
+          }]
         },
-        bindAgeInput: function (e:any) {
-            const value = e.detail.value;
-
-            if (!isValidNumber(value)) {
-                wx.showToast({
-                  title: '请输入正确的年龄',
-                  icon: 'none'
-                });
-                return;
+        {
+          name: 'weight',
+          rules: [{required: true, errorMessage: '请输入体重'}, {
+            validator: (rule:any, value:any) => {
+              if(isValidNumber(value)) {
+                return rule.message;
               }
-            this.setData({
-                age: e.detail.value
-            });
+            }, message: '体重格式不正确'
+          }]
         },
-        bindGripStrengthInput: function (e:any) {
-            const value = e.detail.value;
-
-            if (!isValidNumber(value)) {
-                wx.showToast({
-                  title: '请输入正确的握力',
-                  icon: 'none'
-                });
-                return;
+        {
+          name: 'heartRate',
+          rules: [{required: true, errorMessage: '请输入心率'}, {
+            validator: (rule:any, value:any) => {
+              if(isValidNumber(value)) {
+                return rule.message;
               }
-            this.setData({
-                gripStrength: e.detail.value
-            });
+            }, message: '心率格式不正确'
+          }]
         },
-        bindHeartRateInput: function (e:any) {
-            const value = e.detail.value;
-
-            if (!isValidNumber(value)) {
-                wx.showToast({
-                  title: '请输入正确的心率',
-                  icon: 'none'
-                });
-                return;
+        {
+          name: 'grip',
+          rules: [{required: true, errorMessage: '请输入握力'}, {
+            validator: (rule:any, value:any) => {
+              if(isValidNumber(value)) {
+                return rule.message;
               }
-            this.setData({
-                heartRate: e.detail.value
-            });
-        },
-        selectGender: function(e:any) {
-            this.setData({
-              gender: e.detail.value
-            });
-          },
+            }, message: '握力格式不正确'
+          }]
+        }
+      ],
+  },
+  radioChange: function (e:any) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value);
+
+    var radioItems = this.data.radioItems;
+    for (var i = 0, len = radioItems.length; i < len; ++i) {
+        radioItems[i].checked = radioItems[i].value == e.detail.value;
+    }
+    this.setData({
+        radioItems: radioItems,
+        [`formData.radio`]: e.detail.value
+    });
+},
+
+  
+
+formInputChange(e:any) {
+    const {field} = e.currentTarget.dataset
+    this.setData({
+      [`form.${field}`]: e.detail.value
+    })
+  },
+// 重置表单
+
+    // methods: {
+    //     bindWeightInput: function (e: any) {
+    //         const value = e.detail.value;
+
+    //         if (!isValidNumber(value)) {
+    //             wx.showToast({
+    //               title: '请输入正确的体重',
+    //               icon: 'none'
+    //             });
+    //             return;
+    //           }
+    //         this.setData({
+    //             weight: e.detail.value
+    //         });
+    //     },
+    //     bindHeightInput: function (e: any) {
+    //         const value = e.detail.value;
+
+    //         if (!isValidNumber(value)) {
+    //             wx.showToast({
+    //               title: '请输入正确的身高',
+    //               icon: 'none'
+    //             });
+    //             return;
+    //           }
+    //         this.setData({
+    //             height: e.detail.value
+    //         });
+    //     },
+    //     bindAgeInput: function (e:any) {
+    //         const value = e.detail.value;
+
+    //         if (!isValidNumber(value)) {
+    //             wx.showToast({
+    //               title: '请输入正确的年龄',
+    //               icon: 'none'
+    //             });
+    //             return;
+    //           }
+    //         this.setData({
+    //             age: e.detail.value
+    //         });
+    //     },
+    //     bindGripStrengthInput: function (e:any) {
+    //         const value = e.detail.value;
+
+    //         if (!isValidNumber(value)) {
+    //             wx.showToast({
+    //               title: '请输入正确的握力',
+    //               icon: 'none'
+    //             });
+    //             return;
+    //           }
+    //         this.setData({
+    //             gripStrength: e.detail.value
+    //         });
+    //     },
+    //     bindHeartRateInput: function (e:any) {
+    //         const value = e.detail.value;
+
+    //         if (!isValidNumber(value)) {
+    //             wx.showToast({
+    //               title: '请输入正确的心率',
+    //               icon: 'none'
+    //             });
+    //             return;
+    //           }
+    //         this.setData({
+    //             heartRate: e.detail.value
+    //         });
+    //     },
+    //     selectGender: function(e:any) {
+    //         this.setData({
+    //           gender: e.detail.value
+    //         });
+    //       },
+    
         calculate: function() {
-            const age = parseFloat(this.data.age);
-            const height = parseFloat(this.data.height);
-            const weight = parseFloat(this.data.weight);
-            const heartRate = parseFloat(this.data.heartRate);
-            const gripStrength = parseFloat(this.data.gripStrength);
-            const gender = this.data.gender;
-
+            const age = parseFloat(this.data.form.age);
+            const height = parseFloat(this.data.form.height);
+            const weight = parseFloat(this.data.form.weight);
+            const heartRate = parseFloat(this.data.form.heartRate);
+            const gripStrength = parseFloat(this.data.form.gripStrength);
+            const gender = this.data.form.gender;
+            console.log(
+                age,
+                height,
+                weight,
+                heartRate,
+                gripStrength,
+                gender
+            )
             // 校验data数据是否合法
-            if (!isValidNumber(weight)) {
-                wx.showToast({
-                  title: '请输入正确的体重',
-                  icon: 'none'
-                });
-                return;
-              }
-              if (!isValidNumber(age)) {
-                wx.showToast({
-                  title: '请输入正确的年龄',
-                  icon: 'none'
-                });
-                return;
-              }
-              if (!isValidNumber(gripStrength)) {
-                wx.showToast({
-                  title: '请输入正确的握力',
-                  icon: 'none'
-                });
-                return;
-              }
-              if (!isValidNumber(heartRate)) {
-                wx.showToast({
-                  title: '请输入正确的心率',
-                  icon: 'none'
-                });
-                return;
-              }
-              if (!isValidNumber(height)) {
-                wx.showToast({
-                  title: '请输入正确的身高',
-                  icon: 'none'
-                });
-                return;
-              }
+
 
             // 计算不同公式的结果并更新页面数据
             const formulas = this.data.formulas.map(item => {
@@ -249,10 +299,10 @@ Component({
       height: '',
       gripStrength: '',
       heartRate: '',
-      gender: 'male',
+      gender: '',
       formulas: formulas
     });
   }
-    }
+    // }
     
 });

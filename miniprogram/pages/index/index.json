@@ -1,6 +1,11 @@
 {
+    "useExtendedLib": {
+        "weui": true
+      },
+
   "usingComponents": {
       "calculator": "/pages/calculator/calculator",
+
       "header":"/pages/header/header",
       "footer":"/pages/footer/footer"
   }

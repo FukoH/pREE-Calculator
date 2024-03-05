@@ -1,14 +1,14 @@
 <!--index.wxml-->
 <scroll-view class="scrollarea" scroll-y type="list">
   <view class="container">
-  <view class="header">
+  <!-- <view class="header">
    <header></header>
-  </view>
+  </view> -->
     <view class="calculator">
       <calculator></calculator>
     </view>
-    <view class="footer">
-    <footer></footer>
-    </view>
+    <!-- <view class="footer">
+    <footer></footer> -->
+    <!-- </view> -->
   </view>
 </scroll-view>
