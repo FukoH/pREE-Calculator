@@ -1,45 +1,65 @@
-<view class="container">
-    <view class="gender">
-    <text>性别：</text>
-    <radio-group bindchange="selectGender">
-      <label class="radio-label">
-        <radio value="male" checked="{{gender==='male'}}" />男
-      </label>
-      <label class="radio-label">
-        <radio value="female" checked="{{gender==='female'}}" />女
-      </label>
-    </radio-group>
+<view class="calculator-container">
+    <mp-toptips msg="{{errorMsg}}" type="error" show="{{errorMsg}}" delay="1500"></mp-toptips>
+    <mp-form id="form" rules="{{rules}}" models="{{form}}" bind>
+        <mp-cells title="老年静息热量预测"> 
+    <mp-cells title="性别" class="weui-radio" prop="gender">
+        <!-- <view class="form-item"> -->
+    <radio-group bindchange="radioChange">
+            <radio class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                    <text>{{item.name}}</text>
+                </radio>
+       
+      </radio-group>
+    <!-- </view> -->
+    </mp-cells>
+    <mp-cell class="form_item" prop="age" title="年龄（岁）">
+      <input bindinput="formInputChange" value="{{form.age}}" data-field="age" class="weui-input" placeholder="请输入年龄"/>
+    </mp-cell>
+    <mp-cell class="form_item" prop="height" title="身高（厘米）">
+      <input bindinput="formInputChange" value="{{form.height}}" data-field="height" class="weui-input" placeholder="请输入身高"/>
+    </mp-cell>
+    <mp-cell class="form_item" prop="weight" title="体重（千克）">
+      <input bindinput="formInputChange" value="{{form.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重"/>
+    </mp-cell>
+    <mp-cell class="form_item" prop="heartRate" title="心率（次/分）">
+      <input bindinput="formInputChange" value="{{form.heartRate}}" data-field="heartRate" class="weui-input" placeholder="请输入心率"/>
+    </mp-cell>
+    <mp-cell class="form_item" prop="gripStrength" title="握力（千克）">
+      <input bindinput="formInputChange" value="{{form.gripStrength}}" data-field="gripStrength" class="weui-input" placeholder="请输入握力"/>
+    </mp-cell>
+  </mp-cells>
+</mp-form>
+
+<!--提交按钮-->
+
+<view class="page" data-weui-theme="{{theme}}">
+  <view class="page__bd">
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="calculate">计算</button>
+    <button class="weui-btn weui-btn_warn" bindtap="reset">重置</button>
+  </view>
   </view>
  
-  <view class="input-item">
-    <text>年龄：</text>
-    <input type="digit" bindblur="bindAgeInput" />
-    <text class="unit">岁</text>
-  </view>
-  <view class="input-item">
-    <text>身高：</text>
-    <input type="digit" bindblur="bindHeightInput" />
-    <text class="unit">厘米</text>
-  </view>
-  <view class="input-item">
-    <text>体重：</text>
-    <input type="digit" bindblur="bindWeightInput" />
-    <text class="unit">千克</text>
-  </view>
-  <view class="input-item">
-    <text>心率：</text>
-    <input type="digit" bindblur="bindHeartRateInput" />
-    <text>次/分钟</text>
-  </view>
-  <view class="input-item">
-    <text>握力：</text> <input type="digit" bindblur="bindGripStrengthInput" /><text class="unit">千克</text>
-  </view>
-<view class="result">
-  <button bindtap="calculate">计算</button>
-    <!-- 显示不同公式名称 -->
-  <view wx:for="{{formulas}}" wx:key="index" class="formula-item">
-    <text class="formula-name">{{item.name}}</text>
+  <mp-dialog class="table" title="计算结果" show="{{showDialog}}" bindbuttontap="closeDialog" buttons="{{buttonContent}}">
+    <view wx:for="{{formulas}}" wx:key="index" class="formula-item">
+    <view class="formula-row">
+    <text class="formula-name">{{item.name}}：</text>
     <text class ="formula-result" wx:if="{{item.result}}">{{item.result}}</text>
+    </view>
   </view>
+  </mp-dialog>
+
+
+  <view class="page__bd page__bd_spacing">
+
+<view class="weui-footer">
+
+  <view class="weui-footer__text">Copyright © 北京医院老年科</view>
+
 </view>
+</view>
+
+</view>
+
+
 </view>
