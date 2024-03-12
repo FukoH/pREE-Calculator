@@ -50,5 +50,23 @@ Component({
         }
       })
     },
+    //用户点击右上角分享给好友，要现在分享到好友这个设置menu的两个参数，才可以实现分享到朋友圈
+  onShareAppMessage:function(){
+    wx.showShareMenu({
+      withShareTicket:true,
+      menu:['shareAppMessage','shareTimeline']
+    })
+  },
+  //用户点击右上角分享朋友圈
+  onShareTimeline:function(){
+    return {
+      title:'老年住院患者静息热量计算器'
+    //   query:{
+    //     key:value
+    //   },
+    //   imageUrl:''
+    }
+  }
+
   },
 })

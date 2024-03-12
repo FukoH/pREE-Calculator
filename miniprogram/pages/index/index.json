@@ -1,9 +1,8 @@
 {
-    "useExtendedLib": {
-        "weui": true
-      },
+
 
   "usingComponents": {
       "calculator": "/pages/calculator/calculator"
-  }
+  },
+  "navigationBarTitleText":"北京医院老年科"
 }
